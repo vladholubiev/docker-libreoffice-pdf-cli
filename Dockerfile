@@ -15,6 +15,6 @@ RUN apt-get clean \
 # Write stdin to 'input_file'
 CMD cat - > input_file \
     # Convert 'input_file' to pdf
-    && libreoffice --headless --convert-to pdf --outdir $(pwd) input_file \
+    && libreoffice --invisible --headless --nologo --convert-to pdf --outdir $(pwd) input_file \
     # Send converted file to stdout
     && cat input_file.pdf
