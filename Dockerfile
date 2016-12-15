@@ -12,6 +12,14 @@ RUN apt-get update -qq \
 RUN apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt/archives/*.deb /var/cache/apt/*cache.bin
 
+# Create user 'converter'
+RUN useradd --create-home --shell /bin/bash converter \
+    # Give user right to run libreoffice binary
+    && chown converter:converter /usr/bin/libreoffice
+
+USER converter
+WORKDIR /home/converter
+
 # Write stdin to 'input_file'
 CMD cat - > input_file \
     # Convert 'input_file' to pdf
