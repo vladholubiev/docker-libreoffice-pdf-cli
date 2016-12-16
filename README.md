@@ -7,7 +7,6 @@
 * Doesn't clutter your system with shit-ton of LibreOffice dependencies!
 * UNIX way - feed in `stdin` and get from `stdout`
 * So no docker volumes mounting needed
-* One of the most fresh version of LibreOffice at the moment (5.2.3)
 * `--rm` arg ensures container is removed after converting. Doesn't clutter your Docker
 * Easy removing: `docker rmi vladgolubev/libreoffice-pdf-cli && rm ~/bin/topdf`
 
@@ -25,8 +24,8 @@ $ echo "docker run --rm -i vladgolubev/libreoffice-pdf-cli" > ~/bin/topdf && chm
 $ cat Document.docx | topdf > Document.pdf
 ```
 
-Optionally, if you have `pdftk` installed, you can for example cut some pages:
+Optionally, if you have `pdftk` installed, you can for example cut 1st page:
 
 ```
-$ cat Document.docx | topdf | > Document.pdf
+$ cat Document.docx | topdf | pdftk cat 1 > Document.pdf
 ```
